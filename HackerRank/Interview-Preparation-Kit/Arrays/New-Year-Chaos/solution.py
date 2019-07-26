@@ -11,16 +11,15 @@ def minimumBribes(q):
     total = 0
     result = ''
     for i in range(0, len(q)):
-        diff = abs((i + 1) - q[i])
+        diff = q[i] - (i + 1)
         if diff >= 3:
-            result = 'Too chaotic'
-            break
-        total += diff
-    if result == '':
-        print(int(total/2))
-    else:
-        print(result)
-
+            print('Too chaotic')
+            return
+        else:
+            for j in range(i, min(q[i] + 3, len(q))):
+                if q[j] < q[i]:
+                    total += 1
+    print(total)
 
 if __name__ == '__main__':
     t = int(input())
